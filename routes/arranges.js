@@ -176,9 +176,14 @@ router.get('/delete/:id?',function(req,res){
 	Arrange.findOne({ _id : id } ,
     	function (err,arrange){
        		var day=arrange.day;
+       		var position=arrange.position;
        		if (!err){
 
          		arrange.remove( function(err){
+         			//根据日期和岗位删除Log中所有该日期和岗位的且未发送的排班通知记录
+         			var sday=day + " 00:00:00";
+					var eday=day + " 23:59:59";
+					Log.remove({datetime: {$gte:new Date(sday),$lte:new Date(eday)},position:position,status:false},function(err){if (!err){}});
     
          		});
          		var month=day.substring(0,7);
@@ -189,10 +194,12 @@ router.get('/delete/:id?',function(req,res){
 router.get('/deletebyday/:day?',function(req,res){
 	var day =req.params.day;
 	Arrange.remove({day:day},function(err){
-		if (!err){
+		if (!err){	
 			//根据日期删除Log中所有该日期的且未发送的排班通知记录。
-			console.log(new Date(day));
-			//Log.remove({datetime:new Date(day),status:false},function(err){if (!err){}});
+			var sday=day + " 00:00:00";
+			var eday=day + " 23:59:59";
+			Log.remove({datetime: {$gte:new Date(sday),$lte:new Date(eday)},status:false},function(err){if (!err){}});
+
 			var month=day.substring(0,7);
          	res.redirect("/arranges/"+month);
 		}

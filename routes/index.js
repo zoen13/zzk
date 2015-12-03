@@ -6,6 +6,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
 	var myDate = new Date();
     var nowmonth=myDate.getMonth()+1;
+    if (nowmonth<10) {nowmonth="0"+nowmonth;}
     var imonth=myDate.getFullYear()+"-"+nowmonth;
     res.redirect("/arranges/show/"+imonth);
 });
