@@ -45,9 +45,14 @@
                 <td><%= allalert[i].position %></td>
                 <td><%= allalert[i].hour %>:<%= allalert[i].minute %></td>
                 <td><%= allalert[i].content %></td>
-                <td><a href=alerts/delete/<%= allalert[i]._id %>><button>删除</button></a></td>
+                <td><button type="button" data-toggle="modal" data-target="#confirm" onclick=deletebyid('<%= allalert[i]._id %>')>删除</button></td>
             </tr>
             <% } %>
         </tbody>
+    <script>
+        function deletebyid(id){
+            $(".modal-footer").html('<a href=alerts/delete/'+id+'><button>删除</button></a>');    
+        }
+    </script>
 
 <% include bottom %>

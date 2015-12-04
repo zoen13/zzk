@@ -35,7 +35,7 @@
             <td><%= last[i].week %></td>
             <td><%= last[i].position %></td>
             <td><%= last[i].user %></td>
-            <td><a href=arranges/delete/<%= last[i]._id %>><button>删除</button></a></td>
+            <td><button type="button" data-toggle="modal" data-target="#confirm" onclick=deletebyid('<%= last[i]._id %>')>删除</button></td>
         </tr>
         <% } %>
         </tbody>
@@ -65,8 +65,17 @@
             <td><%= alllist[i].p4 %></td>
             <td><%= alllist[i].p5 %></td>
             <td><%= alllist[i].p6 %></td>
-            <td><a href=arranges/deletebyday/<%= alllist[i].day %>><button>删除</button></a></td>
+            <td><button type="button" data-toggle="modal" data-target="#confirm" onclick=deletebyday('<%= alllist[i].day %>')>删除</button></td>
         </tr>
         <% } %>
     </table>
+
+<script>
+    function deletebyday(day){
+        $(".modal-footer").html('<a href=arranges/deletebyday/'+day+'><button>删除</button></a>');    
+    }
+    function deletebyid(id){
+        $(".modal-footer").html('<a href=arranges/delete/'+id+'><button>删除</button></a>');    
+    }
+</script>
 <% include bottom %>

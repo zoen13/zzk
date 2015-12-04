@@ -25,10 +25,15 @@
    				<td><%= alluser[i].email %></td>
    				<td><%= alluser[i].phone %></td>
    				<td><%= alluser[i].shortnum %></td>
-   				<td><a href=users/delete/<%= alluser[i]._id %>><button>删除</button></a></td>
+   				<td><button type="button" data-toggle="modal" data-target="#confirm" onclick=deletebyid('<%= alluser[i]._id %>')>删除</button></td>
 			</tr>
 			<% } %>
     	</tbody>
     </table>
+    <script>
+      function deletebyid(id){
+        $(".modal-footer").html('<a href=users/delete/'+id+'><button>删除</button></a>');    
+      }
+    </script>
 
 <% include bottom %>

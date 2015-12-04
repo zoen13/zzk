@@ -13,10 +13,10 @@ router.get('/:month?', function(req, res, next) {
 
 function loadData(month,res,req){
 	var userQuery = User.find().sort('-name');
-	var alluser;
-	userQuery.exec(function (err, users){
+	var users;
+	userQuery.exec(function (err, userresult){
 		if (!err){
-			alluser=users;
+			users=userresult;
 		}
 		else {
 			res.send('获取数据失败！');
@@ -34,9 +34,12 @@ function loadData(month,res,req){
 	});
 	
 	var arrangeQuery = Arrange.find({day: new RegExp(month,'i')}).sort('day').sort('position');
-	arrangeQuery.exec(function (err, arranges){
+	var arranges;
+	var posLists = new Array();
+	var iday=req.body.day;
+	arrangeQuery.exec(function (err, arrangeresult){
 		if (!err){
-			var posLists = new Array();
+			arranges=arrangeresult;
 			var posList = function(day,week,p1,p2,p3,p4,p5,p6){
 				this.day=day;
 				this.week=week;
@@ -76,7 +79,7 @@ function loadData(month,res,req){
 		  	 	 		break; 			
 				}
 			}
-			var iday=req.body.day;
+			
 			if (iday===undefined){
 				var myDate = new Date();
 				var nowmonth=myDate.getMonth()+1;
@@ -91,6 +94,7 @@ function loadData(month,res,req){
 			res.send('获取数据失败！');
 		} 
 	});
+	//res.render('arranges', { allarrange: arranges,alluser:users,alllist:posLists,last:last3,month:month,day:iday});
 }
 
 function getDayOfWeek(dateStr){
