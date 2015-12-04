@@ -88,7 +88,7 @@ function loadData(month,res,req){
 				if (iday<10) { iday="0"+iday;}
 				iday=myDate.getFullYear()+"-"+nowmonth+"-"+iday;
 			}
-			res.render('arranges', { allarrange: arranges,alluser:alluser,alllist:posLists,last:last3,month:month,day:iday});
+			res.render('arranges', { allarrange: arranges,alluser:users,alllist:posLists,last:last3,month:month,day:iday});
 		}
 		else {
 			res.send('获取数据失败！');
