@@ -1,6 +1,7 @@
 <% include top %>
+<div class='container'>
     <h2>排班表(<%= month %>)</h2>
-    <input id="month" class="form-control" placeholder="选择查询月份" name="month" onchange="window.location=this.value" readonly />
+    <input type="text" id="month" class="form-control" style="width:160px" placeholder="选择查询月份" name="month" onchange="window.location=this.value" readonly />
     <h2></h2>
     <table class="bordered">
         <thead>
@@ -11,7 +12,7 @@
                 <th>90.9频率</th>
                 <th>新媒体A</th>
                 <th>新媒体B</th>
-                <th>转录(<font color="red">☆</font>)</th>
+                <th>转录(☆)</th>
                 <th>新闻加强</th>
             </tr>
         </thead>
@@ -28,5 +29,9 @@
         </tr>
         <% } %>
     </table>
-
+</div>
 <% include bottom %>
+
+<script>
+    $("#li-list").addClass("active");
+</script>

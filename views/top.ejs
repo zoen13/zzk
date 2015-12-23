@@ -3,20 +3,31 @@
   <head>
     <title>SMG 广播制作科排班提醒系统</title>
     <meta name="viewport" content="initial-scale = 1.0, maximum-scale = 1.0, user-scalable = no, width = device-width">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
     <link href="/jqueryui/css/cupertino/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" >
     <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
     <link rel='stylesheet' href='/stylesheets/bootstrap-theme.min.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-  	<h1>SMG 广播制作科排班提醒系统</h1>
-  	<ul>
-      <li><a href='/'>排班结果</a></li>
-    	<li><a href='/users'>人员信息</a></li>
-    	<li><a href='/alerts'>岗位提醒</a></li>
-    	<li><a href='#' id="arrange">排班设置</a></li>
-    	<li><a href='/logs'>发送日志</a></li>
-      <li><a href='/logout'>退出登录</a></li>
-      <br />
-      <p></p>
-    </ul>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text" id="logo">SMG 广播制作科排班提醒系统</p>
+        </div>
+        
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li id="li-list"><a href='/'><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>&nbsp;排班结果</a></li>
+            <li id="li-user"><a href='/users'><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;人员信息</a></li>
+            <li id="li-alert"><a href='/alerts'><span class="glyphicon glyphicon-bell" aria-hidden="true"></span>&nbsp;岗位提醒</a></li>
+            <li id="li-arrange"><a href='#' id="arrange"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>&nbsp;排班设置</a></li>
+            <li id="li-log"><a href='/logs'><span class="glyphicon glyphicon-list" aria-hidden="true"></span>&nbsp;发送日志</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href='/logout'><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;退出登录</a></li>
+          </ul>
+        </div>
+
+        
+      </div>
+    </nav>

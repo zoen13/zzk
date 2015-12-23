@@ -1,4 +1,5 @@
 <% include top %>
+<div class="container">
     <h2>岗位提醒</h2>
     <form method="post" id="alertadd" action="">
     	岗位：<select name="position" id="position">
@@ -26,10 +27,10 @@
     		<% } %>
     	</select>分
 	    <input type="text" name="content" id="content" class="form-contol" placeholder="提醒内容" />
-	    <input type="submit" value="保存" />
+	    <button type="submit" class="btn btn-link btn-lg"><span class="glyphicon glyphicon-plus" aria-hidden="true"></button>
 	</form>
 
-    <h2>提醒列表</h2>
+    <br />
     <table class="bordered">
         <thead>
             <tr>
@@ -45,14 +46,16 @@
                 <td><%= allalert[i].position %></td>
                 <td><%= allalert[i].hour %>:<%= allalert[i].minute %></td>
                 <td><%= allalert[i].content %></td>
-                <td><button type="button" data-toggle="modal" data-target="#confirm" onclick=deletebyid('<%= allalert[i]._id %>')>删除</button></td>
+                <td><button type="button" class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirm" onclick=deletebyid('<%= allalert[i]._id %>')><span class="glyphicon glyphicon-remove" aria-hidden="true"></button></td>
             </tr>
             <% } %>
         </tbody>
+</div>
+    <% include bottom %>
     <script>
         function deletebyid(id){
-            $(".modal-footer").html('<a href=alerts/delete/'+id+'><button>删除</button></a>');    
+            $(".modal-footer").html('<a href=alerts/delete/'+id+'><button type="button" class="btn btn-danger btn-sm">删除</button></a>');    
         }
+        $("#li-alert").addClass("active");
     </script>
 
-<% include bottom %>

@@ -15,7 +15,7 @@ passport.use('local', new LocalStrategy(
         var user = {
             id: '1',
             username: 'admin',
-            password: 'pass'
+            password: '65223'
         }; // 可以配置通过数据库方式读取登陆账号
 
         if (username !== user.username) {
@@ -61,7 +61,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //初始化cookie和passport
-app.use(session({secret: 'radio.smgtech.net', cookie: { maxAge: 60000 }}));
+app.use(session({secret: 'radio.smgtech.net', cookie: { maxAge: 7200000 }}));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -109,7 +109,7 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.render('error', {
+    res.render('404', {
       message: err.message,
       error: err
     });
@@ -120,7 +120,7 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.render('error', {
+  res.render('404', {
     message: err.message,
     error: {}
   });

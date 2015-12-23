@@ -1,39 +1,42 @@
 <% include top %>
-    <h2>人员信息</h2>
-    <form method="post" id="useradd" action="">
+<div class='container'>
+  <h2>人员信息</h2>
+  <form method="post" id="useradd" action="">
 	    <input type="text" name="name" id="name" class="form-contol" placeholder="姓名" />
 	    <input type="text" name="email" id="email" class="form-contol" placeholder="email" />
 	    <input type="text" name="phone" id="phone" class="form-contol" placeholder="手机" />
 	    <input type="text" name="shortnum" id="shortnum" class="form-contol" placeholder="短号" />
-	    <input type="submit" value="保存" />
+	    <button type="submit" class="btn btn-link btn-lg"><span class="glyphicon glyphicon-plus" aria-hidden="true"></button>
 	</form>
-	<h2>人员列表</h2>
-    <table class="bordered">
-    	<thead>
-    		<tr>
-    			<th>姓名</th>
-    			<th>email</th>
-    			<th>手机</th>
-    			<th>短号</th>
-    			<th>操作</th>
-    		</tr>
-    	</thead>
-    	<tbody>
-    		<% for(var i=0; i<alluser.length; i++) {%>
-    		<tr>
-   				<td><%= alluser[i].name %></td>
-   				<td><%= alluser[i].email %></td>
-   				<td><%= alluser[i].phone %></td>
-   				<td><%= alluser[i].shortnum %></td>
-   				<td><button type="button" data-toggle="modal" data-target="#confirm" onclick=deletebyid('<%= alluser[i]._id %>')>删除</button></td>
-			</tr>
-			<% } %>
-    	</tbody>
-    </table>
+  <br />
+  <table class="bordered">
+  	<thead>
+  		<tr>
+  			<th>姓名</th>
+  			<th>email</th>
+  			<th>手机</th>
+  			<th>短号</th>
+  			<th>操作</th>
+  		</tr>
+  	</thead>
+  	<tbody>
+  		<% for(var i=0; i<alluser.length; i++) {%>
+  		<tr>
+ 				<td><%= alluser[i].name %></td>
+ 				<td><%= alluser[i].email %></td>
+ 				<td><%= alluser[i].phone %></td>
+ 				<td><%= alluser[i].shortnum %></td>
+ 				<td><button type="button" class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirm" onclick=deletebyid('<%= alluser[i]._id %>')><span class="glyphicon glyphicon-remove" aria-hidden="true"></button></td>
+		</tr>
+		<% } %>
+  	</tbody>
+  </table>
+</div>
+    <% include bottom %>
     <script>
       function deletebyid(id){
-        $(".modal-footer").html('<a href=users/delete/'+id+'><button>删除</button></a>');    
+        $(".modal-footer").html('<a href=users/delete/'+id+'><button type="button" class="btn btn-danger btn-sm">删除</button></a>');    
       }
+      $("#li-user").addClass("active");
     </script>
 
-<% include bottom %>

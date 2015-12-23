@@ -1,7 +1,8 @@
 <% include top %>
-    <h2>排班设置</h2>
-    <form method="post" id="arrangeadd" action="">
-    	<input id="day" class="form-control" placeholder="排班日期" name="day" readonly value=<%= day %> />&nbsp
+<div class="container">
+    <h2 class="green">排班设置</h2>
+    <form method="post" id="arrangeadd" action="" class="form-inline">
+    	<input type="text" id="day" class="form-control" style="width:160px" placeholder="排班日期" name="day" readonly value=<%= day %> />&nbsp
 	    岗位：<select name="position" id="position">
             <option value="93.4频率">93.4频率</option>
             <option value="90.9频率">90.9频率</option>
@@ -15,9 +16,9 @@
             <option value="<%= alluser[i].name %>"><%= alluser[i].name %></option>
             <% } %>
         </select>&nbsp
-	    <input type="submit" value="保存" />
+	    <button type="submit" class="btn btn-link btn-lg"><span class="glyphicon glyphicon-plus" aria-hidden="true"></button>
 	</form>
-    <h2>最近3次编排操作</h2>
+    <h3>最近3次编排操作</h3>
     <table class="bordered">
         <thead>
             <tr>
@@ -35,12 +36,12 @@
             <td><%= last[i].week %></td>
             <td><%= last[i].position %></td>
             <td><%= last[i].user %></td>
-            <td><button type="button" data-toggle="modal" data-target="#confirm" onclick=deletebyid('<%= last[i]._id %>')>删除</button></td>
+            <td><button type="button" class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirm" onclick=deletebyid('<%= last[i]._id %>')><span class="glyphicon glyphicon-remove" aria-hidden="true"></button></td>
         </tr>
         <% } %>
         </tbody>
     </table>
-    <h2>排班表<a href="../arranges/show/<%= day.substring(0,7) %>"><font color="red">(按月查询)</font></a></h2>
+    <h3>排班表<a href="../arranges/show/<%= day.substring(0,7) %>"><font color="red">(按月查询)</font></a></h3>
     <table class="bordered">
         <thead>
             <tr>
@@ -50,7 +51,7 @@
                 <th>90.9频率</th>
                 <th>新媒体A</th>
                 <th>新媒体B</th>
-                <th>转录(<font color="red">☆</font>)</th>
+                <th>转录(☆)</th>
                 <th>新闻加强</th>
                 <th>操作</th>
             </tr>
@@ -65,17 +66,18 @@
             <td><%= alllist[i].p4 %></td>
             <td><%= alllist[i].p5 %></td>
             <td><%= alllist[i].p6 %></td>
-            <td><button type="button" data-toggle="modal" data-target="#confirm" onclick=deletebyday('<%= alllist[i].day %>')>删除</button></td>
+            <td><button type="button" class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirm" onclick=deletebyday('<%= alllist[i].day %>')><span class="glyphicon glyphicon-remove" aria-hidden="true"></button></td>
         </tr>
         <% } %>
     </table>
-
+</div>
+<% include bottom %>
 <script>
     function deletebyday(day){
-        $(".modal-footer").html('<a href=arranges/deletebyday/'+day+'><button>删除</button></a>');    
+        $(".modal-footer").html('<a href=arranges/deletebyday/'+day+'><button type="button" class="btn btn-danger btn-sm">删除</button></a>');    
     }
     function deletebyid(id){
-        $(".modal-footer").html('<a href=arranges/delete/'+id+'><button>删除</button></a>');    
+        $(".modal-footer").html('<a href=arranges/delete/'+id+'><button type="button" class="btn btn-danger btn-sm">删除</button></a>');    
     }
+    $("#li-arrange").addClass("active");
 </script>
-<% include bottom %>

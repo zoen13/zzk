@@ -1,7 +1,55 @@
 <% include top %>
-
+<div class="container">
 <h2>待发送</h2>
+<table class="bordered">
+        <thead>
+            <tr>
+                <th>发送时间</th>
+                <th>岗位</th>
+                <th>人员</th>
+                <th>手机</th>
+                <th>提醒内容</th>
+                <th>状态</th>
+            </tr>
+        </thead>
+        <% for (var i=0;i<alllog1.length;i++) { %>
+        <tr>
+            <td><%= alllog1[i].datetime %></td>
+            <td><%= alllog1[i].position %></td>
+            <td><%= alllog1[i].name %></td>
+            <td><%= alllog1[i].phone %></td>
+            <td><%= alllog1[i].content %></td>
+            <td><%= alllog1[i].status %></td>
+        </tr>
+        <% } %>
+    </table>
 
 <h2>已发送</h2>
 
+<table class="bordered">
+        <thead>
+            <tr>
+                <th>发送时间</th>
+                <th>岗位</th>
+                <th>人员</th>
+                <th>手机</th>
+                <th>提醒内容</th>
+                <th>状态</th>
+            </tr>
+        </thead>
+        <% for (var i=0;i<alllog2.length;i++) { %>
+        <tr>
+            <td><%= alllog2[i].datetime %></td>
+            <td><%= alllog2[i].position %></td>
+            <td><%= alllog2[i].name %></td>
+            <td><%= alllog2[i].phone %></td>
+            <td><%= alllog2[i].content %></td>
+            <td><%= alllog2[i].status %></td>
+        </tr>
+        <% } %>
+    </table>
+</div>
 <% include bottom %>
+<script>
+    $("#li-log").addClass("active");
+</script>
