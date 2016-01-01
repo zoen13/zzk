@@ -1,0 +1,53 @@
+<% include top %>
+    <h2>岗位提醒</h2>
+    <form method="post" id="alertadd" action="">
+    	岗位：<select name="position" id="position">
+    		<option value="93.4频率">93.4频率</option>
+    		<option value="90.9频率">90.9频率</option>
+    		<option value="新媒体A">新媒体A</option>
+    		<option value="新媒体B">新媒体B</option>
+    		<option value="转录(☆)">转录(☆)</option>
+    		<option value="新闻加强">新闻加强</option>
+    	</select>
+    	提醒时间：<select name="hour" id="hour">
+    		<% for (i=0;i<24;i++) { %>
+            <% if (i<10) { %>
+            <%    i=""+0+i; %>
+            <% } %>
+    		<option value="<%= i; %>"><%= i; %></option>
+    		<% } %>
+    	</select>时
+    	<select name="minute" id="minute">
+    		<% for (i=0;i<60;i++) { %>
+            <% if (i<10) { %>
+            <%    i=""+0+i; %>
+            <% } %>
+    		<option value="<%= i; %>"><%= i; %></option>
+    		<% } %>
+    	</select>分
+	    <input type="text" name="content" id="content" class="form-contol" placeholder="提醒内容" />
+	    <input type="submit" value="保存" />
+	</form>
+
+    <h2>提醒列表</h2>
+    <table class="bordered">
+        <thead>
+            <tr>
+                <th>岗位</th>
+                <th>提醒时间</th>
+                <th>提醒内容</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(var i=0; i<allalert.length; i++) {%>
+            <tr>
+                <td><%= allalert[i].position %></td>
+                <td><%= allalert[i].hour %>:<%= allalert[i].minute %></td>
+                <td><%= allalert[i].content %></td>
+                <td><a href=alerts/delete/<%= allalert[i]._id %>><button>删除</button></a></td>
+            </tr>
+            <% } %>
+        </tbody>
+
+<% include bottom %>

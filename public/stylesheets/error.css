@@ -1,0 +1,4 @@
+html,body,head,div,p,a{margin: 0;padding: 0;}
+.body-bg{background-color: #dff1f4;}
+.main{width: 700px;overflow: hidden;height: 542px;margin: 20px auto;background: url(../images/error-bg.png) no-repeat 0 0;}
+.title{font-size: 14px;font-weight: bold;margin: 260px 0 0 240px;color: #d3d3d3;}

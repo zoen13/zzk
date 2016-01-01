@@ -1,0 +1,72 @@
+<% include top %>
+    <h2>排班设置</h2>
+    <form method="post" id="arrangeadd" action="">
+    	<input id="day" class="form-control" placeholder="排班日期" name="day" readonly value=<%= day %> />&nbsp
+	    岗位：<select name="position" id="position">
+            <option value="93.4频率">93.4频率</option>
+            <option value="90.9频率">90.9频率</option>
+            <option value="新媒体A">新媒体A</option>
+            <option value="新媒体B">新媒体B</option>
+            <option value="转录(☆)">转录(☆)</option>
+            <option value="新闻加强">新闻加强</option>
+        </select>&nbsp
+        人员：<select name="user" id="user">
+            <% for (i=0;i<alluser.length;i++) { %>
+            <option value="<%= alluser[i].name %>"><%= alluser[i].name %></option>
+            <% } %>
+        </select>&nbsp
+	    <input type="submit" value="保存" />
+	</form>
+    <h2>最近3次编排操作</h2>
+    <table class="bordered">
+        <thead>
+            <tr>
+                <th>日期</th>
+                <th>星期</th>
+                <th>岗位</th>
+                <th>人员</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% for (i=0;i<last.length;i++) { %>
+        <tr>
+            <td><%= last[i].day %></td>
+            <td><%= last[i].week %></td>
+            <td><%= last[i].position %></td>
+            <td><%= last[i].user %></td>
+            <td><a href=arranges/delete/<%= last[i]._id %>><button>删除</button></a></td>
+        </tr>
+        <% } %>
+        </tbody>
+    </table>
+    <h2>排班表<a href="../arranges/show/<%= day.substring(0,7) %>"><font color="red">(按月查询)</font></a></h2>
+    <table class="bordered">
+        <thead>
+            <tr>
+                <th>日期</th>
+                <th>星期</th>
+                <th>93.4频率</th>
+                <th>90.9频率</th>
+                <th>新媒体A</th>
+                <th>新媒体B</th>
+                <th>转录(<font color="red">☆</font>)</th>
+                <th>新闻加强</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <% for (i=1;i<alllist.length;i++) { %>
+        <tr>
+            <td><%= alllist[i].day %></td>
+            <td><%= alllist[i].week %></td>
+            <td><%= alllist[i].p1 %></td>
+            <td><%= alllist[i].p2 %></td>
+            <td><%= alllist[i].p3 %></td>
+            <td><%= alllist[i].p4 %></td>
+            <td><%= alllist[i].p5 %></td>
+            <td><%= alllist[i].p6 %></td>
+            <td><a href=arranges/deletebyday/<%= alllist[i].day %>><button>删除</button></a></td>
+        </tr>
+        <% } %>
+    </table>
+<% include bottom %>

@@ -1,0 +1,32 @@
+<% include top %>
+    <h2>排班表(<%= month %>)</h2>
+    <input id="month" class="form-control" placeholder="选择查询月份" name="month" onchange="window.location=this.value" readonly />
+    <h2></h2>
+    <table class="bordered">
+        <thead>
+            <tr>
+                <th>日期</th>
+                <th>星期</th>
+                <th>93.4频率</th>
+                <th>90.9频率</th>
+                <th>新媒体A</th>
+                <th>新媒体B</th>
+                <th>转录(<font color="red">☆</font>)</th>
+                <th>新闻加强</th>
+            </tr>
+        </thead>
+        <% for (i=1;i<alllist.length;i++) { %>
+        <tr>
+            <td><%= alllist[i].day %></td>
+            <td><%= alllist[i].week %></td>
+            <td><%= alllist[i].p1 %></td>
+            <td><%= alllist[i].p2 %></td>
+            <td><%= alllist[i].p3 %></td>
+            <td><%= alllist[i].p4 %></td>
+            <td><%= alllist[i].p5 %></td>
+            <td><%= alllist[i].p6 %></td>
+        </tr>
+        <% } %>
+    </table>
+
+<% include bottom %>
